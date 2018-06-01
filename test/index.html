@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lazyload test</title>
+    <style>
+        .smallc{
+            position: relative;
+            width: 338px;
+            height: 338px;
+        }
+        .smallimg{
+            width: 338px;
+            height: 338px;
+        }
+        .smallzoom{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 80px;
+            height: 80px;
+            background-color: #ccc; 
+            opacity: 0.4;
+            filter:alpha(opacity = 40);
+            cursor: move;
+        }
+        .bigc{
+            position: absolute;
+            overflow: hidden;
+            width: 338px;
+            height: 338px;
+        }
+        .bigimg{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>imgZoom test</h1>
+    <div class="smallc">
+        <img src="./images/i.jpg" alt="" data-big="./images/i-big.jpg" class="smallimg">
+    </div>
+    <script src="../dist/imgzoom.js"></script>
+    <script>
+        new ImgZoom({
+            smallc:'.smallc'
+        });
+    </script>
+</body>
+</html>
