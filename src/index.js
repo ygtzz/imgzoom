@@ -2,8 +2,7 @@ import assign from 'object-assign';
 
 function ImgZoom(opts){
     opts = assign({
-        smallc: '',
-        scale: 1
+        smallc: ''
     }, opts);
 
     this.opts = opts;
