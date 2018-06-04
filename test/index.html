@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>lazyload test</title>
     <style>
+        *{margin:0;padding:0;}
+        body{
+            padding:100px;
+        }
         .smallc{
             position: relative;
             width: 338px;
@@ -31,24 +35,72 @@
             overflow: hidden;
             width: 338px;
             height: 338px;
+            border: 1px solid red;
         }
         .bigimg{
             position: absolute;
             top: 0;
             left: 0;
         }
+        .imgsc{
+            margin-top:10px;
+        }
+        .imgs{
+            list-style: none;
+        }
+        .img-item{
+            width: 70px;
+            height: 70px;
+            float: left;
+            margin-right:19px;
+            cursor: pointer;
+        }
+        .img-item:last-child{
+            margin-right:0;
+        }
+        .img-item img{
+            width:100%;
+            height:100%;
+        }
+        .img-item:hover{
+            opacity: .6;
+        }
     </style>
 </head>
 <body>
     <h1>imgZoom test</h1>
     <div class="smallc">
-        <img src="./images/i.jpg" alt="" data-big="./images/i-big.jpg" class="smallimg">
+        <img id="smallimg" src="./images/userimg.jpg" alt="" data-big="./images/userimg-big.jpg" class="smallimg">
+    </div>
+    <div class="imgsc">
+        <ul class="j-imgs imgs">
+            <li class="j-item img-item"><img src="./images/userimg.jpg" data-big="./images/userimg-big.jpg" alt=""></li>
+            <li class="j-item img-item"><img src="./images/userimg2.jpg" data-big="./images/userimg2-big.jpg" alt=""></li>
+            <li class="j-item img-item"><img src="./images/userimg3.jpg" data-big="./images/userimg3-big.jpg" alt=""></li>
+            <li class="j-item img-item"><img src="./images/userimg4.jpg" data-big="./images/userimg4-big.jpg" alt=""></li>
+        </ul>
     </div>
     <script src="../dist/imgzoom.js"></script>
     <script>
-        new ImgZoom({
-            smallc:'.smallc'
-        });
+        document.addEventListener('DOMContentLoaded',function(){
+            new ImgZoom({
+                smallc:'.smallc'
+            });
+            //图片切换
+            var smallImg = document.querySelector('#smallimg');
+            var imgs = document.querySelector('.j-imgs');
+            imgs.addEventListener('click',function(e){
+                var target = e.target;
+                while(target != e.currentTarget){
+                    if(target.nodeName == 'IMG'){
+                        smallImg.setAttribute('src',target.getAttribute('src'));
+                        smallImg.setAttribute('data-big',target.getAttribute('data-big'));
+                        return;
+                    }
+                    target = target.parentNode;
+                }
+            });
+        }); 
     </script>
 </body>
 </html>

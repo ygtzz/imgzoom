@@ -63,21 +63,22 @@ ImgZoom.prototype._mouseover = function(){
 }
 
 ImgZoom.prototype._mouseout = function(){
-    // this.smallZoom.style.display = 'none';
-    // this.bigc.style.display = 'none';
+    this.smallZoom.style.display = 'none';
+    this.bigc.style.display = 'none';
 }
 
 ImgZoom.prototype._mousemove = function(e){
     var left = e.clientX - this.smallcRect.left - this.smallZoom.offsetWidth/2,
         top = e.clientY - this.smallcRect.top - this.smallZoom.offsetHeight/2;
-    // left = mid(0,this.smallc.offsetWidth - this.smallZoom.offsetWidth,left);
-    // top = mid(0,this.smallc.offsetHeight - this.smallZoom.offsetHeight,top);
+    left = mid(0,this.smallc.offsetWidth - this.smallZoom.offsetWidth,left);
+    top = mid(0,this.smallc.offsetHeight - this.smallZoom.offsetHeight,top);
 
     this.smallZoom.style.top = top + 'px';
     this.smallZoom.style.left = left + 'px';
 
-    // var ratio = (this.bigImg.offsetWidth - this.bigc.offsetWidth)/(this.smallImg.offsetWidth - this.smallZoom.offsetWidth);
-    var ratio = this.bigImg.offsetWidth/this.smallImg.offsetWidth;
+    //大图与小图必须是等比的，否则位置显示将不准确
+    
+    var ratio = (this.bigImg.offsetWidth - this.bigc.offsetWidth)/(this.smallImg.offsetWidth - this.smallZoom.offsetWidth);
 
     this.bigImg.style.top = -ratio * top + 'px';
     this.bigImg.style.left = -ratio * left + 'px';
