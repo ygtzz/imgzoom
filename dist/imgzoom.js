@@ -108,17 +108,18 @@ function ImgZoom(opts) {
         left: this.smallcRect.left + this.doc.scrollLeft
     };
     this.smallImg = this.smallc.querySelector('img');
+    this.smallMask = this.smallc.querySelector('.j-smallmask');
     this.smallZoom = null;
     this.bigc = null;
     this.bigImg = null;
 
-    this.smallc.onmouseover = function () {
+    this.smallMask.onmouseover = function () {
         _this._mouseover();
     };
-    this.smallc.onmouseout = function () {
+    this.smallMask.onmouseout = function () {
         _this._mouseout();
     };
-    this.smallc.onmousemove = function (e) {
+    this.smallMask.onmousemove = function (e) {
         _this._mousemove(e);
     };
 }

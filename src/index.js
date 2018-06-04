@@ -15,17 +15,18 @@ function ImgZoom(opts){
         left: this.smallcRect.left + this.doc.scrollLeft
     };
     this.smallImg = this.smallc.querySelector('img');
+    this.smallMask = this.smallc.querySelector('.j-smallmask');
     this.smallZoom = null;
     this.bigc = null;
     this.bigImg = null;
-    
-    this.smallc.onmouseover = () => {
+    //使用mask修复mouseover和mouseout的ie闪烁问题
+    this.smallMask.onmouseover = () => {
         this._mouseover();
     };
-    this.smallc.onmouseout = () => {
+    this.smallMask.onmouseout = () => {
         this._mouseout();
     };
-    this.smallc.onmousemove = (e) => {
+    this.smallMask.onmousemove = (e) => {
         this._mousemove(e);
     };
 }

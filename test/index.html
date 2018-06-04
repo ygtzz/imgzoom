@@ -19,6 +19,16 @@
             width: 338px;
             height: 338px;
         }
+        .smallmask{
+            width:338px;
+            height:338px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            filter:alpha(opacity = 0);
+            z-index: 10;            
+        }
         .smallzoom{
             position: absolute;
             top:0;
@@ -71,6 +81,7 @@
     <h1>imgZoom test</h1>
     <div class="smallc">
         <img id="smallimg" src="./images/userimg.jpg" alt="" data-big="./images/userimg-big.jpg" class="smallimg">
+        <div class="j-smallmask smallmask"></div>
     </div>
     <div class="imgsc">
         <ul class="j-imgs imgs">
